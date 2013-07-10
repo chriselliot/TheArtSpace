@@ -1,0 +1,140 @@
+<?php 
+    require_once('includes/header.php');
+?>
+            <h1>James Fisher</h1>
+            <div id="leftcolumn">
+                <img id="profilepic" width="130" height="170" alt="profile pic" src="assets/images/jamesfisher.jpg" />
+                <h3>Region:</h3>
+                <p>Wellington</p>
+                <h3>Preferred Media:</h3>
+                <p>Oil based paint</p>
+                <h3>Education:</h3>
+                <p>Bachelor of Visual Arts</p>
+                <h3>Awards:</h3>
+                <p>The Wallace Arts Trust Vermont Award 2010</p>
+
+                <h2>Contact Artist</h2>
+                <form method="post" action="" id="enquiry">
+                    <fieldset>
+                        <label for="name">Your name:</label>
+                        <input type="text" name="name" id="name" />
+
+                        <label for="email">Email address:</label>
+                        <input type="text" name="email" id="email" />
+
+                        <label for="phone">Phone number:</label>
+                        <input type="text" name="phone" id="phone" />
+
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="10" cols="22"></textarea>
+
+                        <input type="submit" id="submitenquiry" value="Send Enquiry" />
+                    </fieldset>
+                </form>
+            </div><!--end of leftcolumn-->
+            <div id="rightcolumn">
+                <h2>Biography</h2>
+                <p>James is a self taught artist of dynamic talent. Building on each previous exhibition, James discovers and re-defines who he is through his paintings. James is known for his vibrant collection of portraiture, classic cars and other subjects in the realist realm, although his ability to adapt his style to suit any subject, has made him a popular commission artist. He has work in many collections both in New Zealand and overseas. In his new paintings, James explores new creative plains through texture and stroke, experimenting with techniques and deconstruction, refining and discarding as the piece develops its own.</p>
+                <h2>Artworks</h2>
+                <div id="artwork1" class="artworks">
+                    <h3 class="title">Untitled #7</h3>
+                    <div class="artworkphoto"><a href=""><img src="assets/images/jamesfisher-1.jpg" width="138" height="180" title="Click for larger image" /></a></div>
+                    <div class="details">
+                        <h3>Description:</h3>
+                        <p class="description">In his new paintings, James explores new creative plains through texture and stroke, experimenting with techniques and deconstruction, refining and discarding as the piece develops its own.</p>
+                        <h3>Year:</h3><p>2013</p>
+                        <h3>Materials:</h3><p>Oil on canvas</p>
+                        <h3>Size:</h3><p>650mm X 900mm</p>
+                        <h3>Sale Status:</h3><p>For Sale</p>
+                        <h3>Price:</h3><p>NZD $3,000</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div id="artwork2" class="artworks">
+                    <h3 class="title">Untitled #7</h3>
+                    <div class="artworkphoto"><a href=""><img src="assets/images/jamesfisher-1.jpg" width="138" height="180" title="Click for larger image" /></a></div>
+                    <div class="details">
+                        <h3>Description:</h3>
+                        <p class="description">In his new paintings, James explores new creative plains through texture and stroke, experimenting with techniques and deconstruction, refining and discarding as the piece develops its own.</p>
+                        <h3>Year:</h3><p>2013</p>
+                        <h3>Materials:</h3><p>Oil on canvas</p>
+                        <h3>Size:</h3><p>650mm X 900mm</p>
+                        <h3>Sale Status:</h3><p>For Sale</p>
+                        <h3>Price:</h3><p>NZD $3,000</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div id="artwork3" class="artworks">
+                    <h3 class="title">Untitled #7</h3>
+                    <div class="artworkphoto"><a href=""><img src="assets/images/jamesfisher-1.jpg" width="138" height="180" title="Click for larger image" /></a></div>
+                    <div class="details">
+                        <h3>Description:</h3>
+                        <p class="description">In his new paintings, James explores new creative plains through texture and stroke, experimenting with techniques and deconstruction, refining and discarding as the piece develops its own.</p>
+                        <h3>Year:</h3><p>2013</p>
+                        <h3>Materials:</h3><p>Oil on canvas</p>
+                        <h3>Size:</h3><p>650mm X 900mm</p>
+                        <h3>Sale Status:</h3><p>For Sale</p>
+                        <h3>Price:</h3><p>NZD $3,000</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div id="artwork4" class="artworks">
+                    <h3 class="title">Untitled #7</h3>
+                    <div class="artworkphoto"><a href=""><img src="assets/images/jamesfisher-1.jpg" width="138" height="180" title="Click for larger image" /></a></div>
+                    <div class="details">
+                        <h3>Description:</h3>
+                        <p class="description">In his new paintings, James explores new creative plains through texture and stroke, experimenting with techniques and deconstruction, refining and discarding as the piece develops its own.</p>
+                        <h3>Year:</h3><p>2013</p>
+                        <h3>Materials:</h3><p>Oil on canvas</p>
+                        <h3>Size:</h3><p>650mm X 900mm</p>
+                        <h3>Sale Status:</h3><p>For Sale</p>
+                        <h3>Price:</h3><p>NZD $3,000</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div id="artwork5" class="artworks">
+                    <h3 class="title">Untitled #7</h3>
+                    <div class="artworkphoto"><a href=""><img src="assets/images/jamesfisher-1.jpg" width="138" height="180" title="Click for larger image"/></a></div>
+                    <div class="details">
+                        <h3>Description:</h3>
+                        <p class="description">In his new paintings, James explores new creative plains through texture and stroke, experimenting with techniques and deconstruction, refining and discarding as the piece develops its own.In his new paintings, James explores new creative plains through texture and stroke, experimenting with techniques and deconstruction, refining and discarding as the piece develops its own.In his new paintings, James explores new creative plains through texture and stroke, experimenting with techniques and deconstruction, refining and discarding as the piece develops its own.</p>
+                        <h3>Year:</h3><p>2013</p>
+                        <h3>Materials:</h3><p>Oil on canvas</p>
+                        <h3>Size:</h3><p>650mm X 900mm</p>
+                        <h3>Sale Status:</h3><p>For Sale</p>
+                        <h3>Price:</h3><p>NZD $3,000</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div id="artwork6" class="artworks">
+                    <h3 class="title">Untitled #7</h3>
+                    <div class="artworkphoto"><a href=""><img src="assets/images/jamesfisher-1.jpg" width="138" height="180" title="Click for larger image"/></a></div>
+                    <div class="details">
+                        <h3>Description:</h3>
+                        <p class="description"></p>
+                        <h3>Year:</h3><p>2013</p>
+                        <h3>Materials:</h3><p>Oil on canvas</p>
+                        <h3>Size:</h3><p>650mm X 900mm</p>
+                        <h3>Sale Status:</h3><p>For Sale</p>
+                        <h3>Price:</h3><p>NZD $3,000</p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div><!--end of rightcolumn-->
+
+<?php 
+    require_once('includes/footer.php');
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+                    
