@@ -61,11 +61,11 @@ class Category {
 		}
 	}
 }
-
+/*
 $oCat = new Category();
 $oCat->load(1);
 
 echo '<pre>';
 print_r($oCat);
-echo '</pre>';
+echo '</pre>';*/
 ?>
