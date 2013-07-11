@@ -119,6 +119,9 @@ class Artist {
 			case "Visible":
 				return $this->iVisible;
 				break;
+			case "Artworks":
+				return $this->aArtworks;
+				break;
 			default:
 				die($sProperty . " cannot be read from");
 		}

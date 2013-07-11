@@ -13,9 +13,6 @@
 
 <?php 
     require_once('includes/footer.php');
-    echo '<pre>'; 
-    print_r($aAllArtworks); 
-    echo '</pre>';
 ?>
 
 
