@@ -1,3 +1,16 @@
+<?php
+ob_start();
+session_start();
+
+require_once ('categoryMenuView.php');
+require_once('categoryManager.php');
+
+$oMV = new MenuView();
+$oCM = new CategoryManager();
+$aAllCategories = $oCM->getAllCategories();
+
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -25,17 +38,9 @@
         </div><!--end of header-->
         <div id="left-nav">
             <h2>Art Category</h2>
-            <ul id="cat-nav">
-                <li><a href="artworks.php">Painting</a></li>
-                <li><a href="artworks.php">Sculpture</a></li>
-                <li><a href="artworks.php">Photography</a></li>
-                <li><a href="artworks.php">Print</a></li>
-                <li><a href="artworks.php">Mixed Media</a></li>
-                <li><a href="artworks.php">Drawing</a></li>
-                <li><a href="artworks.php">Jewellery</a></li>
-                <li><a href="artworks.php">Other Media</a></li>
-            </ul>
-            <!--<a id="registernow" href="register.php">Are you an Artist? Join now</a>-->
+            
+            <?php echo $oMV->render($aAllCategories); ?>
+
         </div><!--end of left-nav-->
         <div id="search-box">
             <h2>Find Art or Artists</h2>

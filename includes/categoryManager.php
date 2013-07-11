@@ -1,6 +1,6 @@
 <?php 
-require_once ('db-wrapper.php');
-require_once ('category-class.php');
+require_once ('database.php');
+require_once ('categoryClass.php');
 
 class CategoryManager {
 
@@ -28,11 +28,11 @@ class CategoryManager {
 
 
 }
-
+/*
 $oCatMan = new CategoryManager();
 $aAllCat = $oCatMan->getAllCategories();
 
 echo '<pre>';
 print_r($aAllCat);
-echo '</pre>';
+echo '</pre>';*/
 ?>

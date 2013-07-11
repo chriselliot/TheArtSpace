@@ -149,18 +149,6 @@ iframe {
 	padding: 3px 15px;
 }
 
-/*#registernow {
-	display: inline-block;
-	height: 130px;
-	width: 120px;
-	background-image: url('../images/register.png');
-	background-position: top;
-	background-repeat: no-repeat;
-	text-indent: -99999px;
-	margin-top: 30px;
-}
-
-#registernow:hover {background-position: bottom}*/
 
 /*--------------SEARCH BOX-------------------*/
 
@@ -281,20 +269,6 @@ iframe {
 	color: #EF5A28;
 }
 
-/*#homeheading a {
-	display: inline-block;
-	height: 130px;
-	width: 120px;
-	background-image: url('../images/register.png');
-	background-position: top;
-	background-repeat: no-repeat;
-	text-indent: -99999px;
-	float: right;
-	margin: -65px 40px 0 0;
-}
-
-#homeheading a:hover {background-position: bottom}*/
-
 #virtual img {
 	float: left;
 	margin: 10px;
@@ -315,6 +289,11 @@ iframe {
 	color: #919396;;
 }
 
+.artistprofiles {
+	float: left;
+	width: 200px;
+	margin-right: 15px;
+}
 
 /*--------------LEFT COLUMN-------------------*/
 
@@ -413,6 +392,15 @@ iframe {
 	color: #EF5A28;
 	padding-top: 20px;
 	border-top: 1px dotted silver;
+}
+
+#rightcolumn a {
+	text-decoration: none;
+	color: #EF5A28;
+}
+
+#rightcolumn a:hover {
+	text-decoration: underline;
 }
 
 .artworks {

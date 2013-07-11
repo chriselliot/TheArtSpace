@@ -9,7 +9,7 @@
                 <h3><a href="">Untitled #7</a></h3>
                 <p>James Fisher</p>
                 <h2>New Members</h2>
-                <img id="profilepic" width="130" height="170" alt="profile pic" src="assets/images/jamesfisher.jpg" />
+                <img id="profilepic" width="130" height="170" alt="profile pic" src="assets/images/profiles/jamesfisher1.jpg" />
                 <h3><a href="">James Fisher</a></h3>
                 <p>Wellington</p>
                 <h2>What is a Virtual Exhibition?</h2>
