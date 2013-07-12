@@ -187,23 +187,19 @@ iframe {
 	padding-left: 5px;
 }
 
-.submit {
+#search-box .submit {
 	background-image: url('../images/find.png');
 	background-position: top;
-	width: 40px !important;
-	padding: 3px 0;
+	width: 40px;
+	height: 26px;
 	text-indent: -999999px;
 	*text-indent: 0;
 	*padding: 0;
 	border: none;
 	float: left;
-		box-sizing: content-box;
-	  -moz-box-sizing: content-box;
-	  -ms-box-sizing: content-box;
-	  -webkit-box-sizing: content-box;
 }
 
-.submit:hover{
+#search-box .submit:hover{
 	background-position: bottom;
 	cursor: pointer;
 }
@@ -326,6 +322,43 @@ iframe {
 	margin: auto;
 }
 
+#artwork-nav {
+	list-style-type: none;
+	margin-left: 35px;
+}
+#artwork-nav li {
+	float: left;
+	margin-right: 30px;
+	margin-bottom: 20px;
+	font-family: 'OpenSansExtrabold';
+	font-size: 25px;
+	text-align: center;
+	line-height: 190px;
+}
+#artwork-nav li a {
+	display: block;
+	width: 180px;
+	height: 190px;
+	/*background-color: #EF5A28;*/
+	color: white;
+	background-image: url('../images/sculpture.png');
+	background-repeat: no-repeat;
+	background-position: top;
+}
+#artwork-nav li a:hover {
+	text-decoration: none;
+	background-position: bottom;
+	color: #EF5A28;
+}
+#artwork-nav .Painting {background-image: url('../images/painting.png');}
+#artwork-nav .Sculpture {background-image: url('../images/sculpture.png');}
+#artwork-nav .Photography {background-image: url('../images/photography.png');}
+#artwork-nav .Print {background-image: url('../images/print.png');}
+#artwork-nav .Mixed-Media {background-image: url('../images/mixed-media.png');}
+#artwork-nav .Drawing {background-image: url('../images/drawing.png');}
+#artwork-nav .Jewellery {background-image: url('../images/jewellery.png');}
+#artwork-nav .Other {background-image: url('../images/other.png');}
+
 /*--------------LEFT COLUMN-------------------*/
 
 #leftcolumn {
@@ -381,10 +414,6 @@ iframe {
 	text-indent: -999999px;
 	border: none !important;
 	float: left;
-		box-sizing: content-box;
-	  -moz-box-sizing: content-box;
-	  -ms-box-sizing: content-box;
-	  -webkit-box-sizing: content-box;
 }
 
 #submitenquiry:hover {

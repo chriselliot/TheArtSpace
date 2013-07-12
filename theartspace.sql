@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 12, 2013 at 09:27 AM
+-- Generation Time: Jul 12, 2013 at 02:55 p.m.
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -122,10 +122,10 @@ INSERT INTO `tbcategory` (`CategoryID`, `CategoryName`) VALUES
 (2, 'Sculpture'),
 (3, 'Photography'),
 (4, 'Print'),
-(5, 'Mixed Media'),
+(5, 'Mixed-Media'),
 (6, 'Drawing'),
 (7, 'Jewellery'),
-(8, 'Other Media');
+(8, 'Other');
 
 -- --------------------------------------------------------
 

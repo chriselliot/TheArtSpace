@@ -1,17 +1,15 @@
 <?php 
     require_once('includes/header.php');
     require_once('includes/artworkManager.php');
-    $oArtworkMan = new ArtworkManager();
-    $aAllArtworks = $oArtworkMan->getAllArtworks();
-?>
+    require_once('includes/artworkView.php');
+    
 
-        <h1>Artworks</h1>
+    $oCM = new CategoryManager();
+	$aAllCategories = $oCM->getAllCategories();
+	$oAV = new ArtworkView();
 
-        <div id="leftcolumn"></div><!--end of leftcolumn-->
-        <div id="rightcolumn"></div><!--end of rightcolumn-->
-        
+	echo $oAV->render($aAllCategories);
 
-<?php 
     require_once('includes/footer.php');
 ?>
 
