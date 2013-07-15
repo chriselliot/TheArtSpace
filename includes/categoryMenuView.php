@@ -10,8 +10,7 @@ class MenuView {
 		for ($i=0;$i<count($aCategories);$i++) {
 
 			$oCurrentCategory = $aCategories[$i];
-			$sHTML .= '<li><a href="artworks.php">'.htmlentities($oCurrentCategory->CategoryName).'</a></li>';
-			//$sHTML .= '<li><a href="artworks.php?CategoryID='.htmlentities($oCurrentCategory->CategoryID).'">'.htmlentities($oCurrentCategory->CategoryName).'</a></li>';
+			$sHTML .= '<li><a href="artworks.php?CategoryID='.htmlentities($oCurrentCategory->CategoryID).'">'.htmlentities($oCurrentCategory->CategoryName).'</a></li>';
 		}
 
 		$sHTML .= '</ul>';

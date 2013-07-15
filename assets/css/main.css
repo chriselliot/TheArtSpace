@@ -471,6 +471,42 @@ iframe {
 	min-height: 250px;
 }
 
+.artworks-small {
+	border: 1px silver dotted;
+	width: 430px;
+	margin-bottom: 15px;
+	margin-right: 10px;
+	float: left;
+}
+.artworks-small .details {
+	width: 240px;
+	float: left;
+	margin-left: 15px;
+	margin-bottom: 10px;
+}
+
+.artworks-small .artworkphoto {
+	vertical-align: center;
+	float: left;
+	margin-left: 10px;
+	width: 160px;
+	height: 160px;
+	margin-bottom: 10px;
+}
+.artworks-small .title{
+	margin-left: 10px;
+}
+.artworks-small .details a {
+	font-family: 'OpenSansBold';
+	color: black !important;
+	font-size: 16px;
+}
+
+.artworks-small p {
+	display: inline-block;
+	width: 150px;
+}
+
 .title {
 	font-family: 'OpenSansBoldItalic';
 	font-style: italic;
@@ -483,6 +519,7 @@ iframe {
 	margin-left: 20px;
 	width: 185px;
 	height: 185px;
+	margin-bottom: 10px;
 }
 
 .artworkphoto img {
@@ -499,7 +536,7 @@ iframe {
 
 .details h3 {
 	float: left;
-	width: 100px;
+	width: 90px;
 	font-size: 14px;
 	clear: both;
 }

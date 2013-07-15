@@ -29,7 +29,7 @@ $aAllCategories = $oCM->getAllCategories();
             <div id="logo"><a href="index.php"></a></div>
             <ul id="nav">
                 <li><a href="artists.php">ARTISTS</a></li>
-                <li><a href="artworks.php">ARTWORKS</a></li>
+                <li><a href="categories.php">ARTWORKS</a></li>
                 <li><a href="exhibition.php">VIRTUAL EXHIBITION</a></li>
                 <li><a href="register.php">REGISTER</a></li>
                 <li><a href="contact.php">CONTACT</a></li>

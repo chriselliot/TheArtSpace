@@ -1,14 +1,22 @@
 <?php 
     require_once('includes/header.php');
-    require_once('includes/artworkManager.php');
+    require_once('includes/categoryClass.php');
     require_once('includes/artworkView.php');
-    
-
-    $oCM = new CategoryManager();
-	$aAllCategories = $oCM->getAllCategories();
+   
 	$oAV = new ArtworkView();
 
-	echo $oAV->render($aAllCategories);
+	$iCategoryID = 1;
+
+    if (isset($_GET['CategoryID'])) {
+
+        $iCategoryID = $_GET['CategoryID'];
+
+    }
+
+    $oCat = new Category();
+    $oCat->load($iCategoryID);
+
+    echo $oAV->render($oCat);
 
     require_once('includes/footer.php');
 ?>

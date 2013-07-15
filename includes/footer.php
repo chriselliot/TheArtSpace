@@ -5,7 +5,7 @@
             <div id="footer-logo"><a href="index.php"></a></div>
             <ul id="footer-nav">
                 <li><a href="artists.php">Artists</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
-                <li><a href="artworks.php">Artworks</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+                <li><a href="categories.php">Artworks</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
                 <li><a href="exhibition.php">Virtual Exhibition</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
                 <li><a href="register.php">Register</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
                 <li><a href="contact.php">Contact</a></li>
