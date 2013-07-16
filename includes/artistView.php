@@ -15,7 +15,7 @@ class ArtistView {
 			$oCurrentArtist = $aArtists[$i];
 
 			$sHTML .= '<div class="artistprofiles">
-			                <div class="profilepic"><img src="assets/images/profiles/'.$oCurrentArtist->ProfilePic.'" /></div>
+			                <div class="profilepic"><img src="assets/images/profiles/'.$oCurrentArtist->ProfilePic.'"  /></div>
 			                <h3><a href="artistbio.php?ArtistID='.$oCurrentArtist->ArtistID.'">'.$oCurrentArtist->FirstName.' '.$oCurrentArtist->LastName.'</a></h3>
 			                <p>'.$oCurrentArtist->Region.'</p>
 			            </div>';

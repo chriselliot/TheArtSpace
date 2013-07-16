@@ -11,7 +11,7 @@ class ArtworkView {
 		$sHTML .= '<h1>'.$oCategory->CategoryName.' Artworks</h1>';   
 
 		$sHTML .= '<div id="fullwidth">
-		            <h3>Click on the Artists name for more information about an artwork or to contact the Artist.</h3><p></p>';
+		            <h3>Click on the Artists name for more artwork information or contact details.</h3><p></p>';
 
 		for ($i=0;$i<count($aArtworks);$i++){
 

@@ -1,6 +1,14 @@
 <?php
 ob_start();
 session_start();
+
+require_once('artistClass.php');
+
+if(isset($_SESSION["currentUser"]) == true){
+         $oArtist = new Artist();
+        $oArtist->load($_SESSION["currentUser"]);           
+    }
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,6 +25,17 @@ session_start();
 <body>
     <div id="container">
         <div id="header">
+            <div id="user-nav">
+            <?php
+                if(isset($_SESSION["currentUser"]) == true){
+                    echo    '<ul>
+                                <li>Hi, <span>'.$oArtist->FirstName.'</span></li>
+                                <li><a href="artistbio.php?ArtistID='.$oArtist->ArtistID.'">UPDATE MY BIO |</a></li>
+                                <li><a href="artistbio.php?ArtistID='.$oArtist->ArtistID.'">MY BIO PAGE | </a></li>
+                            </ul>';
+                }
+            ?>    
+            </div>
             <div id="logo"><a href="index.php"></a></div>
             <ul id="nav">
                 <li><a href="artists.php">ARTISTS</a></li>
@@ -24,6 +43,14 @@ session_start();
                 <li><a href="exhibition.php">VIRTUAL EXHIBITION</a></li>
                 <li><a href="register.php">REGISTER</a></li>
                 <li><a href="contact.php">CONTACT</a></li>
-                <li id="login"><a href="login.php">LOGIN</a></li>
+
+                <?php
+                if(isset($_SESSION["currentUser"]) == false){
+                    echo '<li id="login"><a href="login.php">LOGIN</a></li>';
+                }else{
+                    echo '<li id="logout"><a href="logout.php">LOGOUT</a></li>';
+                } 
+            ?>
+
             </ul>
         </div><!--end of header-->

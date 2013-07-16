@@ -16,6 +16,7 @@ class Artist {
 	private $sEmail;
 	private $sPassword;
 	private $iVisible;
+	private $aArtworks;
 
 	public function __construct(){
 
@@ -77,9 +78,74 @@ class Artist {
 
 	}
 
-	public function save(){
+	public function loadByEmail ($sEmail){
+
+		$oDatabase = new Database();
+
+		$sQuery = "SELECT ArtistID FROM tbartist WHERE Email ='".$oDatabase->escape_value($sEmail)."'";
+		$oResult = $oDatabase->query($sQuery);
+		$aArtists = $oDatabase->fetch_array($oResult);
+
+		$oDatabase->close();
+	
+		if ($aArtists != false){
+
+			$this->load($aArtists["ArtistID"]);
+			return true;
+		}else {
+			return false;
+		}
 
 	}
+
+	public function save(){
+
+		$oDatabase = new Database();
+
+		if($this->iArtistID == 0){
+
+			$sQuery = "INSERT INTO tbartist (FirstName, LastName, Region, ProfilePic, PreferredMedium, Education, Awards, Biography, Email, Password)
+						VALUES ('".$oDatabase->escape_value($this->sFirstName)."',
+								'".$oDatabase->escape_value($this->sLastName)."',
+								'".$oDatabase->escape_value($this->sRegion)."',
+								'".$oDatabase->escape_value($this->sProfilePic)."',
+								'".$oDatabase->escape_value($this->sPreferredMedium)."',
+								'".$oDatabase->escape_value($this->sEducation)."',
+								'".$oDatabase->escape_value($this->sAwards)."',
+								'".$oDatabase->escape_value($this->sBiography)."',
+								'".$oDatabase->escape_value($this->sEmail)."',
+								'".$oDatabase->escape_value($this->sPassword)."')";
+
+			$oResult = $oDatabase->query($sQuery);
+
+			if($oResult == true){
+				$this->iArtistID = $oDatabase->get_insert_id();
+			}else{
+				die($sQuery . " is invalid");
+			}
+
+		}else{
+
+			$sQuery = "UPDATE tbartist
+						SET FirstName = '".$oDatabase->escape_value($this->sFirstName)."',
+							LastName = '".$oDatabase->escape_value($this->sLastName)."',
+							Region = '".$oDatabase->escape_value($this->sRegion)."',
+							ProfilePic = '".$oDatabase->escape_value($this->sProfilePic)."',
+							PreferredMedium = '".$oDatabase->escape_value($this->sPreferredMedium)."',
+							Education = '".$oDatabase->escape_value($this->sEducation)."',
+							Awards = '".$oDatabase->escape_value($this->sAwards)."',
+							Biography = '".$oDatabase->escape_value($this->sBiography)."'";
+						
+			$oResult = $oDatabase->query($sQuery);
+			if($oResult == false){
+				die($sQuery . " is invalid");
+			}
+		}
+
+		$oDatabase->close();
+
+	}
+
 
 	public function __get($sProperty){
 		switch ($sProperty){
@@ -124,6 +190,44 @@ class Artist {
 				break;
 			default:
 				die($sProperty . " cannot be read from");
+		}
+	}
+
+	public function __set($sProperty,$value){
+
+		switch ($sProperty){
+			case "FirstName":
+				$this->sFirstName = $value;
+				break;
+			case "LastName":
+				$this->sLastName = $value;
+				break;
+			case "Region":
+				$this->sRegion = $value;
+				break;
+			case "ProfilePic":
+				$this->sProfilePic = $value;
+				break;
+			case "PreferredMedium":
+				$this->sPreferredMedium = $value;
+				break;
+			case "Education":
+				$this->sEducation = $value;
+				break;
+			case "Awards":
+				$this->sAwards = $value;
+				break;
+			case "Biography":
+				$this->sBiography = $value;
+				break;
+			case "Email":
+				$this->sEmail = $value;
+				break;
+			case "Password":
+				$this->sPassword = $value;
+				break;
+			default:
+				die($sProperty . " cannot be written to");
 		}
 	}
 }

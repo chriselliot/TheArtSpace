@@ -4,10 +4,17 @@ session_start();
 
 require_once ('categoryMenuView.php');
 require_once('categoryManager.php');
+require_once('artistClass.php');
 
 $oMV = new MenuView();
 $oCM = new CategoryManager();
 $aAllCategories = $oCM->getAllCategories();
+
+    if(isset($_SESSION["currentUser"]) == true){
+         $oArtist = new Artist();
+        $oArtist->load($_SESSION["currentUser"]);           
+    }
+
 
 ?>
 
@@ -26,6 +33,17 @@ $aAllCategories = $oCM->getAllCategories();
 <body>
     <div id="container">
         <div id="header">
+            <div id="user-nav">
+            <?php
+                if(isset($_SESSION["currentUser"]) == true){
+                    echo    '<ul>
+                                <li>Hi, <span>'.$oArtist->FirstName.'</span></li>
+                                <li><a href="artistbio.php?ArtistID='.$oArtist->ArtistID.'">UPDATE MY BIO |</a></li>
+                                <li><a href="artistbio.php?ArtistID='.$oArtist->ArtistID.'">MY BIO PAGE | </a></li>  
+                            </ul>';
+                }
+            ?>    
+            </div>
             <div id="logo"><a href="index.php"></a></div>
             <ul id="nav">
                 <li><a href="artists.php">ARTISTS</a></li>
@@ -33,7 +51,15 @@ $aAllCategories = $oCM->getAllCategories();
                 <li><a href="exhibition.php">VIRTUAL EXHIBITION</a></li>
                 <li><a href="register.php">REGISTER</a></li>
                 <li><a href="contact.php">CONTACT</a></li>
-                <li id="login"><a href="login.php">LOGIN</a></li>
+
+            <?php
+                if(isset($_SESSION["currentUser"]) == false){
+                    echo '<li id="login"><a href="login.php">LOGIN</a></li>';
+                }else{
+                    echo '<li id="logout"><a href="logout.php">LOGOUT</a></li>';
+                } 
+            ?>
+
             </ul>
         </div><!--end of header-->
         <div id="left-nav">

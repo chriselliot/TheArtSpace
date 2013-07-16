@@ -107,4 +107,41 @@ class Artwork {
 		}
 	}
 
+	public function __set($sProperty,$value){
+		switch ($sProperty){
+			case "CategoryID":
+				$this->iCategoryID = $value;
+				break;
+			case "ArtistID":
+				$this->iArtistID = $value;
+				break;
+			case "Title":
+				$this->sTitle = $value;
+				break;
+			case "Description":
+				$this->sDescription = $value;
+				break;
+			case "Year":
+				$this->iYear = $value;
+				break;
+			case "Materials":
+				$this->sMaterials = $value;
+				break;
+			case "Size":
+				$this->sSize = $value;
+				break;
+			case "SaleStatus":
+				$this->sSaleStatus = $value;
+				break;
+			case "Price":
+				$this->iPrice = $value;
+				break;
+			case "PhotoLink":
+				$this->sPhotoLink = $value;
+				break;
+			default:
+				die($sProperty . " cannot be written to");
+		}
+	}
+
 }
