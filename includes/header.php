@@ -25,9 +25,10 @@ $aAllCategories = $oCM->getAllCategories();
         <meta name="description" content="The online space for both Artists and Art Lovers." />
         <meta name="keywords" content="Art, New Zealand Art, Painting, Sculpture, Photography, Print, Mixed Media, Drawing, Jewellery, Digital Art" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>The Art Space</title>
+        <title>The Art Space | For Artists and Art Lovers</title>
         <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
         <link href="assets/fonts/fonts.css" rel="stylesheet" type="text/css" />
+        <link rel="shortcut icon" href="assets/images/favicon.ico" />
     </head>
     
 <body>
@@ -38,8 +39,9 @@ $aAllCategories = $oCM->getAllCategories();
                 if(isset($_SESSION["currentUser"]) == true){
                     echo    '<ul>
                                 <li>Hi, <span>'.$oArtist->FirstName.'</span></li>
-                                <li><a href="artistbio.php?ArtistID='.$oArtist->ArtistID.'">UPDATE MY BIO |</a></li>
-                                <li><a href="artistbio.php?ArtistID='.$oArtist->ArtistID.'">MY BIO PAGE | </a></li>  
+                                <li><a href="myartworks.php">MANAGE ARTWORKS </a> |</li>
+                                <li><a href="editartistbio.php">UPDATE MY BIO </a> |</li>
+                                <li><a href="artistbio.php?ArtistID='.$oArtist->ArtistID.'">MY BIO  </a> |</li>
                             </ul>';
                 }
             ?>    
@@ -73,14 +75,14 @@ $aAllCategories = $oCM->getAllCategories();
             <form method="post" action="">
                 <fieldset>
                     <label for="artistsearch">Search by Artist</label>
-                    <input type="text" placeholder="e.g. Colin McCahon" name="artistsearch" id="artistsearch" />
+                    <input type="text" name="artistsearch" id="artistsearch" />
                     <input type="submit" class="submit" value="find" />
                 </fieldset>
             </form>
             <form method="post" action="">
                 <fieldset>
                     <label for="keywordsearch">Search by Keyword</label>
-                    <input type="text" placeholder="e.g. Landscape" name="keywordsearch" id="keywordsearch" />
+                    <input type="text" name="keywordsearch" id="keywordsearch" />
                     <input type="submit" class="submit" value="find" />
                 </fieldset>
             </form>

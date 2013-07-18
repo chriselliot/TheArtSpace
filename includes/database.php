@@ -2,7 +2,7 @@
 define("HOST", "localhost");
 define("USER_NAME", "root");
 define("PASSWORD", "");
-define("DB_NAME", "theartspace");
+define("DB_NAME", "thartspace2");
 
 //This class represents the database connection to mysql db
 class Database{

@@ -17,9 +17,10 @@ if(isset($_SESSION["currentUser"]) == true){
         <meta name="description" content="The online space for both Artists and Art Lovers." />
         <meta name="keywords" content="Art, New Zealand Art, Painting, Sculpture, Photography, Print, Mixed Media, Drawing, Jewellery, Digital Art" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>The Art Space</title>
+        <title>The Art Space | For Artists and Art Lovers</title>
         <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
         <link href="assets/fonts/fonts.css" rel="stylesheet" type="text/css" />
+        <link rel="shortcut icon" href="assets/images/favicon.ico" />
     </head>
     
 <body>
@@ -30,8 +31,9 @@ if(isset($_SESSION["currentUser"]) == true){
                 if(isset($_SESSION["currentUser"]) == true){
                     echo    '<ul>
                                 <li>Hi, <span>'.$oArtist->FirstName.'</span></li>
-                                <li><a href="artistbio.php?ArtistID='.$oArtist->ArtistID.'">UPDATE MY BIO |</a></li>
-                                <li><a href="artistbio.php?ArtistID='.$oArtist->ArtistID.'">MY BIO PAGE | </a></li>
+                                <li><a href="myartworks.php">MANAGE ARTWORKS </a> |</li>
+                                <li><a href="editartistbio.php">UPDATE MY BIO </a> |</li>
+                                <li><a href="artistbio.php?ArtistID='.$oArtist->ArtistID.'">MY BIO  </a> |</li>
                             </ul>';
                 }
             ?>    
@@ -54,3 +56,4 @@ if(isset($_SESSION["currentUser"]) == true){
 
             </ul>
         </div><!--end of header-->
+    <div>

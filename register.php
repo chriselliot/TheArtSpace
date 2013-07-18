@@ -9,9 +9,11 @@
 
     if(isset($_POST["Submit"])){
 
-    $oForm->data = $_POST;  
+    $oForm->data = $_POST;
+    $oForm->files = $_FILES;
     $oForm->checkRequired("FirstName");
     $oForm->checkRequired("LastName");
+    $oForm->checkImageUpload("ProfilePic");
     $oForm->checkRequired("Biography");
     $oForm->checkEmail("Email");
     $oForm->checkRequired("Password");
@@ -34,11 +36,14 @@
 	    
 	    if($oForm->valid==true){
 
-	    	$oArtist = new Artist();
+            $sNewName = strtolower($_POST["FirstName"].$_POST["LastName"]).".jpg";
+            $oForm->moveFile("ProfilePic",$sNewName);
+	    	
+            $oArtist = new Artist();
 	    	$oArtist->FirstName = $_POST["FirstName"];
 	    	$oArtist->LastName = $_POST["LastName"];
 	    	$oArtist->Region = $_POST["Region"];
-	    	$oArtist->ProfilePic = $_POST["ProfilePic"];
+	    	$oArtist->ProfilePic = $sNewName;
 	    	$oArtist->PreferredMedium = $_POST["PreferredMedium"];
 	    	$oArtist->Awards = $_POST["Awards"];
 	    	$oArtist->Biography = $_POST["Biography"];
@@ -47,7 +52,7 @@
 	    	$oArtist->Password = Encoder::Encode($_POST["ConfirmPassword"]);
 	    	$oArtist->save();
 
-	    	/*$mail = new PHPMailer();
+	    	$mail = new PHPMailer();
             $mail->SetFrom('admin@theartspace.com', 'The Art Space administrator');
             $mail->AddReplyTo('no-reply@theartspace.com','No Reply');
             $mail->AddAddress($_POST["Email"], $_POST["FirstName"]);
@@ -61,7 +66,7 @@
               echo "Mailer Error: " . $mail->ErrorInfo;
             } else {
               echo "Message sent!";
-            }*/
+            }
 
             $_SESSION["currentUser"] = $oArtist->ArtistID;
 
@@ -88,9 +93,9 @@
             
             <h1>Register with us</h1>
             <div id="leftcolumn">
-            	<h5>* Required fields</h5><br />
                <h3>To set up your own Artist biography page, simply fill in this form.</h3><br />
-               <h3>You can upload new artworks or change your details by logging in and visiting the My Details page.</h3> 
+               <p>Once registered and logged in, you can upload new artworks on the <a href="manageartworks.php">MANAGE ARTWORKS</a> page or change your biography details on the <a href="editartistbio.php">UPDATE MY BIO</a> page.</p> 
+               <p>* Required fields</p>
             </div><!--end of leftcolumn-->
             <div id="rightcolumn">
 

@@ -13,7 +13,7 @@
                 <img width="580" height="400" alt="James Fisher Artwork" src="assets/images/artwork3.png" />
                 <img width="580" height="400" alt="James Fisher Artwork" src="assets/images/artwork3.png" />
                 <img width="580" height="400" alt="James Fisher Artwork" src="assets/images/artwork2.png" />
-         </div>     
+         </div> 
 
 <?php 
     require_once('includes/footer.php');

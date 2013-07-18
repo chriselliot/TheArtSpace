@@ -9,7 +9,7 @@ class Form {
 
 	public function __construct(){
 
-		$this->sHTML = '<form action="" method="post" enctype="multipart/form-data">';
+		$this->sHTML = '<form action="" method="post" enctype="multipart/form-data"><fieldset>';
 		$this->aData = array();
 		$this->aErrors = array();
 		$this->aFiles = array();
@@ -17,6 +17,7 @@ class Form {
 	}
 
 	public function makeFileUpload($sControlName,$sLabel){
+
 
 		$sError = "";
 		if(isset($this->aErrors[$sControlName])){
@@ -62,9 +63,8 @@ class Form {
 
 		$this->sHTML .= '
 			<label for="'.$sControlName.'">'.$sLabel.'</label>
-            <textarea rows="8" cols="40" name="'.$sControlName.'" id="'.$sControlName.'">'.$sData.'</textarea><div class="message">'.$sError.'</div>
+            <textarea name="'.$sControlName.'" id="'.$sControlName.'">'.$sData.'</textarea><div class="message">'.$sError.'</div>
 			<div class="clear"></div>';
-		
 	}
 
 	public function makePass($sControlName,$sLabel){
@@ -165,13 +165,13 @@ class Form {
 		  $filename = basename($aFile['name']);
 		  $ext = substr($filename, strrpos($filename, '.') + 1);
 		  if (($ext == "jpg") && ($aFile["type"] == "image/jpeg") && 
-			($aFile["size"] < 1000000)) {   
+			($aFile["size"] < 5000000)) {   
 		  } else {
-		     $sError =  "Error: Only .jpg images under 1mb are accepted for upload";
+		     $sError =  "Error: Only .jpg images under 5mb are accepted for upload";
 		  }
-		} else {
+		} /*else {
 		 $sError = "Error: No file uploaded";
-		}
+		}*/
 		if($sError != ""){
 			$this->aErrors[$sControlName] = $sError; 
 		}
@@ -181,7 +181,7 @@ class Form {
 		
 		$aFile = $this->aFiles[$sControlName];
 
-		$sNewName = dirname(__FILE__).'/../assets/'.$sNewName;
+		$sNewName = dirname(__FILE__).'/../assets/images/profiles/'.$sNewName;
 		move_uploaded_file($aFile['tmp_name'],$sNewName);
 
 	}
@@ -198,7 +198,7 @@ class Form {
 		switch ($sProperty) {
 
 			case 'html':
-				return $this->sHTML . "</form>";
+				return $this->sHTML . "</fieldset></form>";
 				break;
 			case 'valid':
 				if(count($this->aErrors)==0){

@@ -2,10 +2,10 @@
     require_once('includes/header.php');
 ?>
 
-            <h1 id="homeheading">The online space for <br /><span>Artists</span> &amp; <span>Art Enthusiasts<span></h1>
+            <h1 id="homeheading">The online space for <br /><span>Artists</span> &amp; <span>Art Enthusiasts</span></h1>
             <div id="leftcolumn">
                 <h2>New Artworks</h2>
-                <img src="assets/images/artworks/mixedmedia1.jpg" width="138" height="180" />
+                <img alt="new artwork" src="assets/images/artworks/mixedmedia1.jpg" width="138" height="180" />
                 <h3><a href="">Untitled #7</a></h3>
                 <p>James Fisher</p>
                 <h2>New Members</h2>

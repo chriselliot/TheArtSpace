@@ -74,6 +74,8 @@ form textarea {
 	display: inline-block;
 	padding: 5px;
 	resize: none;
+	width: 330px;
+	height: 200px;
 }
 form #Submit {
 	background-image: url('../images/register-button.png');
@@ -448,13 +450,14 @@ form select {
 #leftcolumn a {
 	text-decoration: none;
 	color: #EF5A28;
+	font-family: 'OpenSansBold';
 }
 
 #leftcolumn a:hover {
 	text-decoration: underline;
 }
 
-#enquiry label {
+#leftcolumn label {
 	display: block;
 	font-family: 'OpenSansBold';
 	color: #4f4f4f;
@@ -462,41 +465,49 @@ form select {
 	float: left;
 	font-size: 16px;
 	margin-bottom: 5px;
+	margin-top: 10px;
 }
 
-#enquiry input {
+#leftcolumn input {
 	height: 25px;
 	float: left;
 	width: 197px;
-	margin-bottom: 15px;
 	background-color: #F1F1F1;
 	border: 1px silver solid;
+	margin-bottom: 0;
 }
 
-#enquiry textarea {
+#leftcolumn textarea {
 	float: left;
 	resize: none;
 	background-color: #F1F1F1;
 	border: 1px silver solid;
+	width: 190px;
+	margin-bottom: 0;
 }
 
-#submitenquiry {
+#leftcolumn #Submit {
 	background-image: url('../images/enquiry-button.png');
 	background-position: top;
 	background-repeat: no-repeat;
-	background-color: white !important;
-	width: 65px !important;
-	height: 66px !important;
+	background-color: white;
+	width: 65px;
+	height: 66px;
 	margin-top: 10px;
+	margin-left: 0;
 	padding: 0;
 	text-indent: -999999px;
-	border: none !important;
+	border: none;
 	float: left;
 }
 
-#submitenquiry:hover {
+#leftcolumn #Submit:hover {
 	cursor: pointer;
 	background-position: bottom;
+}
+
+#leftcolumn .message {
+	margin: 0;
 }
 
 /*--------------RIGHT COLUMN-------------------*/
@@ -653,24 +664,34 @@ form select {
 	margin-left: 20px;
 }
 
-#login-butt #Submit {
-	background-image: url('../images/login-button.png');
+#login-butt #Submit, #edit #Submit {
 	background-position: top;
 	background-repeat: no-repeat;
-	background-color: white !important;
-	width: 65px !important;
-	height: 66px !important;
+	background-color: white;
+	width: 65px;
+	height: 66px;
 	margin-top: 10px;
 	padding: 0;
 	text-indent: -999999px;
-	border: none !important;
+	border: none;
 	float: left;
 }
 
-#login-butt #Submit:hover {
+#login-butt #Submit {
+	background-image: url('../images/login-button.png');
+}
+
+#edit #Submit {
+	background-image: url('../images/update-button.png');
+}
+
+#login-butt #Submit:hover, #edit #Submit:hover {
 	cursor: pointer;
 	background-position: bottom;
 }
+
+
+
 
 /*--------------FOOTER-------------------*/
 

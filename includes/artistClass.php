@@ -134,7 +134,9 @@ class Artist {
 							PreferredMedium = '".$oDatabase->escape_value($this->sPreferredMedium)."',
 							Education = '".$oDatabase->escape_value($this->sEducation)."',
 							Awards = '".$oDatabase->escape_value($this->sAwards)."',
-							Biography = '".$oDatabase->escape_value($this->sBiography)."'";
+							Biography = '".$oDatabase->escape_value($this->sBiography)."'
+							WHERE ArtistID = ".$oDatabase->escape_value($this->iArtistID);
+							
 						
 			$oResult = $oDatabase->query($sQuery);
 			if($oResult == false){

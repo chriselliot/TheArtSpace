@@ -22,7 +22,7 @@ class ArtworkView {
 
 		$sHTML .= '<div class="artworks-small">
 	                    <h3 class="title">'.$oCurrentArtwork->Title.'</h3>
-	                    <div class="artworkphoto"><a href=""><img src="assets/images/artworks/'.$oCurrentArtwork->PhotoLink.'" title="Click for larger image" /></a></div>
+	                    <div class="artworkphoto"><a href=""><img alt="Artwork Image" src="assets/images/artworks/'.$oCurrentArtwork->PhotoLink.'" title="Click for larger image" /></a></div>
 	                    <div class="details">
 	                        <h3>Artist:</h3>
 	                        <p><a href="artistbio.php?ArtistID='.$oArtist->ArtistID.'">'.$oArtist->FirstName.' '.$oArtist->LastName.'</a></p>
