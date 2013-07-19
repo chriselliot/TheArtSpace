@@ -36,12 +36,12 @@
 
         $oForm->checkRequired("FirstName");
         $oForm->checkRequired("LastName");
-        $oForm->checkImageUpload("ProfilePic");
+        $oForm->checkImageUploadOptional("ProfilePic");
         $oForm->checkRequired("Biography");
     	    
     	    if($oForm->valid==true){
 
-                $sNewName = substr(Encoder::Encode($oArtist->Password),0,10).".jpg";
+                $sNewName = "profiles/".substr(Encoder::Encode($oArtist->Password),0,10).".jpg";
                 $oForm->moveFile("ProfilePic",$sNewName);
     	    	
     	    	$oArtist->FirstName = $_POST["FirstName"];
@@ -63,7 +63,7 @@
         $oForm->makeInput("FirstName","First Name *");
     	$oForm->makeInput("LastName","Last Name *");
     	$oForm->makeInput("Region","Region");
-    	$oForm->makeFileUpload("ProfilePic","Profile Image");
+    	$oForm->makeFileUpload("ProfilePic","Profile Image *");
     	$oForm->makeInput("PreferredMedium","Preferred Medium");
     	$oForm->makeInput("Education", "Education");
     	$oForm->makeInput("Awards", "Awards");
@@ -76,7 +76,7 @@
             <h1>Edit Artist Biography</h1>
             <div id="leftcolumn">
                 
-                <div class="profilepic"><img alt="Artist Profile pic" src="assets/images/profiles/<?php echo $oArtist->ProfilePic ?> " /></div>
+                <div class="profilepic"><img alt="Artist Profile pic" src="assets/images/<?php echo $oArtist->ProfilePic ?> " /></div>
                 <h3><?php echo $oArtist->FirstName.' '.$oArtist->LastName; ?></h3><br />
                <p>You can update your biography page here. Simply modify the form data and click update.</p>
                <p>Update your artworks on the <a href="manageartworks.php">MANAGE ARTWORKS</a> page.</p> 

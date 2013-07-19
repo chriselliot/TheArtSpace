@@ -39,7 +39,8 @@
 
             <h1>Login</h1>
             <div id="leftcolumn">
-            	<h3>Not a member? <br />Register <a href="register.php">here</a></h3>
+            	<h3>Not a member?</h3>
+            	<p>Go to the <a href="register.php">REGISTER</a> page.</p>
             </div><!--end of leftcolumn-->
             <div id="rightcolumn">
             <div id="login-butt">  <?php echo $oForm->html; ?> </div>

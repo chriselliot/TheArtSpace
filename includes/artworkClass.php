@@ -62,6 +62,54 @@ class Artwork {
 
 	public function save(){
 
+		$oDatabase = new Database();
+
+		if($this->iArtworkID == 0){
+
+			$sQuery = "INSERT INTO tbartwork (CategoryID, ArtistID, Title, Description, Year, Materials, Size, SaleStatus, Price, PhotoLink)
+						VALUES ('".$oDatabase->escape_value($this->iCategoryID)."',
+								'".$oDatabase->escape_value($this->iArtistID)."',
+								'".$oDatabase->escape_value($this->sTitle)."',
+								'".$oDatabase->escape_value($this->sDescription)."',
+								'".$oDatabase->escape_value($this->iYear)."',
+								'".$oDatabase->escape_value($this->sMaterials)."',
+								'".$oDatabase->escape_value($this->sSize)."',
+								'".$oDatabase->escape_value($this->sSaleStatus)."',
+								'".$oDatabase->escape_value($this->iPrice)."',
+								'".$oDatabase->escape_value($this->sPhotoLink)."')";
+
+			$oResult = $oDatabase->query($sQuery);
+
+			if($oResult == true){
+				$this->iArtworkID = $oDatabase->get_insert_id();
+			}else{
+				die($sQuery . " is invalid");
+			}
+
+		}else{
+
+			$sQuery = "UPDATE tbartwork
+						SET CategoryID = '".$oDatabase->escape_value($this->iCategoryID)."',
+							ArtistID = '".$oDatabase->escape_value($this->iArtistID)."',
+							Title = '".$oDatabase->escape_value($this->sTitle)."',
+							Description = '".$oDatabase->escape_value($this->sDescription)."',
+							Year = '".$oDatabase->escape_value($this->iYear)."',
+							Materials = '".$oDatabase->escape_value($this->sMaterials)."',
+							Size = '".$oDatabase->escape_value($this->sSize)."',
+							SaleStatus = '".$oDatabase->escape_value($this->sSaleStatus)."',
+							Price = '".$oDatabase->escape_value($this->iPrice)."',
+							PhotoLink = '".$oDatabase->escape_value($this->sPhotoLink)."',
+							WHERE ArtworkID = ".$oDatabase->escape_value($this->iArtworkID);
+							
+						
+			$oResult = $oDatabase->query($sQuery);
+			if($oResult == false){
+				die($sQuery . " is invalid");
+			}
+		}
+
+		$oDatabase->close();
+
 	}
 
 	public function __get($sProperty){

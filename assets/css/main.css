@@ -93,9 +93,10 @@ form #Submit:hover {
 	background-position: 0 66px;
 }
 form select {
-	margin-bottom: 10px;
-	height: 25px;
-	width: 206px;
+	margin-bottom: 15px;
+	width: 260px;
+	padding: 5px;
+	float: left;
 }
 
 /*--------------CONTAINER-------------------*/
@@ -499,6 +500,7 @@ form select {
 	text-indent: -999999px;
 	border: none;
 	float: left;
+	font-size: 0;
 }
 
 #leftcolumn #Submit:hover {
@@ -675,6 +677,7 @@ form select {
 	text-indent: -999999px;
 	border: none;
 	float: left;
+	font-size: 0;
 }
 
 #login-butt #Submit {

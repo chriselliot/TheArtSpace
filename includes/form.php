@@ -93,9 +93,15 @@ class Form {
 			$sData = $this->aData[$sControlName];
 		}
 
+		$sError = "";
+		if(isset($this->aErrors[$sControlName])){
+			$sError = $this->aErrors[$sControlName];
+		}
+
 		$this->sHTML .= '
-					<label for="'.$sControlName.'" id="'.$sControlName.'">'.$sLabel.':</label>
+					<label for="'.$sControlName.'" id="'.$sControlName.'">'.$sLabel.'</label>
                     <select name="'.$sControlName.'" id="'.$sControlName.'">'."\n";
+        $this->sHTML .= '<option value="0" selected="selected">--- Choose ---</option>';
 
         	foreach($aOptions as $key=>$value){
 
@@ -111,6 +117,41 @@ class Form {
         	}
             
          $this->sHTML .= '</select><br />';
+         $this->sHTML .= '<div class="message">'.$sError.'</div><div class="clear"></div>';
+	}
+
+	public function makeSelectFixed($sControlName,$sLabel,$aOptions){
+
+		$sData = "";
+		if(isset($this->aData[$sControlName])){ 
+			$sData = $this->aData[$sControlName];
+		}
+
+		$sError = "";
+		if(isset($this->aErrors[$sControlName])){
+			$sError = $this->aErrors[$sControlName];
+		}
+
+		$this->sHTML .= '
+					<label for="'.$sControlName.'" id="'.$sControlName.'">'.$sLabel.'</label>
+                    <select name="'.$sControlName.'" id="'.$sControlName.'">'."\n";
+        $this->sHTML .= '<option value="0" selected="selected" >--- Choose ---</option>';
+
+        		foreach($aOptions as $key=>$value){
+
+        		if($key==$sData){
+        			//sticky option
+        			$this->sHTML .= '<option value="'.$value.'" selected="selected">'.$value.'</option>'."\n";
+
+        		}else{
+
+        			$this->sHTML .= '<option value="'.$value.'">'.$value.'</option>'."\n";
+
+        		}
+        	}
+            
+         $this->sHTML .= '</select><br />';
+         $this->sHTML .= '<div class="message">'.$sError.'</div><div class="clear"></div>';
 	}
 
 
@@ -130,6 +171,20 @@ class Form {
 		}
 
 		if(strlen($sData)==0){
+			$this->aErrors[$sControlName] = "* Required field"; 
+		}
+
+	}
+
+	public function checkRequiredSelect($sControlName){
+
+		$sData = "";
+
+		if(isset($this->aData[$sControlName])){
+			$sData = trim($this->aData[$sControlName]); 
+		}
+
+		if($sData == "0"){
 			$this->aErrors[$sControlName] = "* Required field"; 
 		}
 
@@ -167,10 +222,32 @@ class Form {
 		  if (($ext == "jpg") && ($aFile["type"] == "image/jpeg") && 
 			($aFile["size"] < 5000000)) {   
 		  } else {
+		     $sError =  "Error: Only JPEG images under 5mb are accepted for upload";
+		  }
+		} else {
+		 $sError = "* No file uploaded";
+		}
+		if($sError != ""){
+			$this->aErrors[$sControlName] = $sError; 
+		}
+	}
+
+	public function checkImageUploadOptional($sControlName){
+
+		$aFile = $this->aFiles[$sControlName];
+
+		$sError = "";
+
+		if((!empty($aFile)) && ($aFile['error'] == 0)) {
+		  $filename = basename($aFile['name']);
+		  $ext = substr($filename, strrpos($filename, '.') + 1);
+		  if (($ext == "jpg") && ($aFile["type"] == "image/jpeg") && 
+			($aFile["size"] < 5000000)) {   
+		  } else {
 		     $sError =  "Error: Only .jpg images under 5mb are accepted for upload";
 		  }
 		} /*else {
-		 $sError = "Error: No file uploaded";
+		 $sError = "* No file uploaded";
 		}*/
 		if($sError != ""){
 			$this->aErrors[$sControlName] = $sError; 
@@ -181,7 +258,7 @@ class Form {
 		
 		$aFile = $this->aFiles[$sControlName];
 
-		$sNewName = dirname(__FILE__).'/../assets/images/profiles/'.$sNewName;
+		$sNewName = dirname(__FILE__).'/../assets/images/'.$sNewName;
 		move_uploaded_file($aFile['tmp_name'],$sNewName);
 
 	}

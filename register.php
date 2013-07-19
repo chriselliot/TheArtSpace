@@ -36,7 +36,7 @@
 	    
 	    if($oForm->valid==true){
 
-            $sNewName = strtolower($_POST["FirstName"].$_POST["LastName"]).".jpg";
+            $sNewName = "profiles/".substr(Encoder::Encode($oArtist->Password),0,10).".jpg";
             $oForm->moveFile("ProfilePic",$sNewName);
 	    	
             $oArtist = new Artist();
@@ -70,7 +70,7 @@
 
             $_SESSION["currentUser"] = $oArtist->ArtistID;
 
-	    	header("Location: artistbio.php?ArtistID=$oArtist->ArtistID"); 
+	    	header("Location: manageartworks.php"); 
             exit;
 	    }
 
@@ -79,7 +79,7 @@
     $oForm->makeInput("FirstName","First Name *");
 	$oForm->makeInput("LastName","Last Name *");
 	$oForm->makeInput("Region","Region");
-	$oForm->makeFileUpload("ProfilePic","Profile Image");
+	$oForm->makeFileUpload("ProfilePic","Profile Image *");
 	$oForm->makeInput("PreferredMedium","Preferred Medium");
 	$oForm->makeInput("Education", "Education");
 	$oForm->makeInput("Awards", "Awards");

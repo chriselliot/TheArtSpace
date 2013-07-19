@@ -39,7 +39,7 @@ $aAllCategories = $oCM->getAllCategories();
                 if(isset($_SESSION["currentUser"]) == true){
                     echo    '<ul>
                                 <li>Hi, <span>'.$oArtist->FirstName.'</span></li>
-                                <li><a href="myartworks.php">MANAGE ARTWORKS </a> |</li>
+                                <li><a href="manageartworks.php">MANAGE ARTWORKS </a> |</li>
                                 <li><a href="editartistbio.php">UPDATE MY BIO </a> |</li>
                                 <li><a href="artistbio.php?ArtistID='.$oArtist->ArtistID.'">MY BIO  </a> |</li>
                             </ul>';

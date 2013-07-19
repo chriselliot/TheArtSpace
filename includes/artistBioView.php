@@ -9,7 +9,7 @@ class ArtistBioView {
 		$sHTML = "";
 		$sHTML .= '<h1>'.$oArtist->FirstName.' '.$oArtist->LastName.'</h1>
 		            <div id="leftcolumn">
-		                <div class="profilepic"><img alt="Artist Profile pic" src="assets/images/profiles/'.$oArtist->ProfilePic.'" /></div>
+		                <div class="profilepic"><img alt="Artist Profile pic" src="assets/images/'.$oArtist->ProfilePic.'" /></div>
 		                <h3>Region:</h3>
 		                <p>'.$oArtist->Region.'</p>
 		                <h3>Preferred Media:</h3>
@@ -36,7 +36,7 @@ class ArtistBioView {
 
 		$sHTML .= '<div class="artworks">
 	                    <h3 class="title">'.$oCurrentArtwork->Title.'</h3>
-	                    <div class="artworkphoto"><a href=""><img alt="Artwork image" src="assets/images/artworks/'.$oCurrentArtwork->PhotoLink.'" title="Click for larger image" /></a></div>
+	                    <div class="artworkphoto"><a href=""><img alt="Artwork image" src="assets/images/'.$oCurrentArtwork->PhotoLink.'" title="Click for larger image" /></a></div>
 	                    <div class="details">
 	                        <h3>Description:</h3>
 	                        <p class="description">'.$oCurrentArtwork->Description.'</p>
