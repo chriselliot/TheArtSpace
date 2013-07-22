@@ -20,7 +20,10 @@ if(isset($_SESSION["currentUser"]) == true){
         <title>The Art Space | For Artists and Art Lovers</title>
         <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
         <link href="assets/fonts/fonts.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/lightbox.css" rel="stylesheet" />
         <link rel="shortcut icon" href="assets/images/favicon.ico" />
+        <script src="assets/js/jquery-1.10.2.min.js"></script>
+        <script src="assets/js/lightbox-2.6.min.js"></script>
     </head>
     
 <body>

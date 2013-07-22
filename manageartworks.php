@@ -50,6 +50,11 @@
         }
     }
 
+    $iUserID = $_SESSION["currentUser"];
+    $oArtist = new Artist();
+    $oArtist->load($iUserID);
+    $aArtworks = $oArtist->Artworks;
+
     $oCM = new CategoryManager();
     $aCatObjects = $oCM->getAllCategories();
 
@@ -63,6 +68,21 @@
     $aSaleStatus = array();
     $aSaleStatus[1] = "For Sale";
     $aSaleStatus[2] = "SOLD";
+
+    $aWorkStatus = array();
+    $aWorkStatus[1] = "Active";
+    $aWorkStatus[0] = "Inactive";
+
+
+    $oFormRadio = new Form();
+
+    for(;$iCount<count($aCatObjects);){
+       $oFormRadio->makeRadio("artwork1","Dream",$aWorkStatus); 
+    }
+    
+    //$oFormRadio->makeRadio("artwork2","Birds",$aWorkStatus);
+
+    $oFormRadio->makeSubmit("Submit", "Upload");
 
     $oForm->makeInput("Title","Title *");
     $oForm->makeInput("Description","Description *");
@@ -85,6 +105,10 @@
             </div><!--end of leftcolumn-->
             <div id="rightcolumn">
 
+                <h2>My Current Artworks</h2>
+              <div id="edit">  <?php echo $oFormRadio->html; echo'<pre>';print_r($aWorks);echo'</pre>'; ?> </div>
+
+                <h2>Upload New Artworks</h2>
               <div id="edit">  <?php echo $oForm->html; ?> </div>
 
             </div><!--end of rightcolumn-->

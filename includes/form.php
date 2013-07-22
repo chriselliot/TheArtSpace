@@ -116,7 +116,7 @@ class Form {
         		}
         	}
             
-         $this->sHTML .= '</select><br />';
+         $this->sHTML .= '</select>';
          $this->sHTML .= '<div class="message">'.$sError.'</div><div class="clear"></div>';
 	}
 
@@ -150,8 +150,31 @@ class Form {
         		}
         	}
             
-         $this->sHTML .= '</select><br />';
+         $this->sHTML .= '</select>';
          $this->sHTML .= '<div class="message">'.$sError.'</div><div class="clear"></div>';
+	}
+
+	public function makeRadio ($sControlName,$sLabel,$aOptions){
+
+		$sData = "";
+		if(isset($this->aData[$sControlName])){ 
+			$sData = $this->aData[$sControlName];
+		}
+
+		$sError = "";
+		if(isset($this->aErrors[$sControlName])){
+			$sError = $this->aErrors[$sControlName];
+		}
+
+		$this->sHTML .= '<fieldset>';
+		$this->sHTML .= '<legend>'.$sLabel.'</legend>';
+    	foreach($aOptions as $key=>$value){
+    		$id = $sControlName ."_". $key;
+	
+			$this->sHTML .= '<input type="radio" name="'.$sControlName.'" value="'.$key.'" id="'.$id.'" /><label for="'.$id.'">'.$value.'</label>'."\n";
+    		
+    	} 
+     	$this->sHTML .= '</fieldset>';
 	}
 
 

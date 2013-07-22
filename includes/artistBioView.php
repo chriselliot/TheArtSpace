@@ -36,7 +36,7 @@ class ArtistBioView {
 
 		$sHTML .= '<div class="artworks">
 	                    <h3 class="title">'.$oCurrentArtwork->Title.'</h3>
-	                    <div class="artworkphoto"><a href=""><img alt="Artwork image" src="assets/images/'.$oCurrentArtwork->PhotoLink.'" title="Click for larger image" /></a></div>
+	                    <div class="artworkphoto"><a href="assets/images/'.$oCurrentArtwork->PhotoLink.'" title="'.$oCurrentArtwork->Title.' by '.$oArtist->FirstName.' '.$oArtist->LastName.'" data-lightbox="assets/images/'.$oCurrentArtwork->PhotoLink.'"><img alt="Artwork image" src="assets/images/'.$oCurrentArtwork->PhotoLink.'" title="Click for larger image" /></a></div>
 	                    <div class="details">
 	                        <h3>Description:</h3>
 	                        <p class="description">'.$oCurrentArtwork->Description.'</p>
