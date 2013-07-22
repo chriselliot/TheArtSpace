@@ -44,16 +44,11 @@
                 $oArtwork->Price = $_POST["Price"];
                 $oArtwork->save();
 
-                header("Location: artworks.php?CategoryID=$oArtwork->CategoryID"); 
+                //header("Location: artworks.php?CategoryID=$oArtwork->CategoryID"); 
                 exit;
             }   
         }
     }
-
-    $iUserID = $_SESSION["currentUser"];
-    $oArtist = new Artist();
-    $oArtist->load($iUserID);
-    $aArtworks = $oArtist->Artworks;
 
     $oCM = new CategoryManager();
     $aCatObjects = $oCM->getAllCategories();
@@ -69,18 +64,23 @@
     $aSaleStatus[1] = "For Sale";
     $aSaleStatus[2] = "SOLD";
 
+    $iUserID = $_SESSION["currentUser"];
+    $oArtist = new Artist();
+    $oArtist->load($iUserID);
+    $aArtObjects = $oArtist->Artworks;
+
     $aWorkStatus = array();
-    $aWorkStatus[1] = "Active";
-    $aWorkStatus[0] = "Inactive";
-
-
-    $oFormRadio = new Form();
-
-    for(;$iCount<count($aCatObjects);){
-       $oFormRadio->makeRadio("artwork1","Dream",$aWorkStatus); 
-    }
+    $aWorkStatus[0] = "Visible";
+    $aWorkStatus[1] = "Hidden";
     
-    //$oFormRadio->makeRadio("artwork2","Birds",$aWorkStatus);
+    $oFormRadio = new Form();
+    $aArtworks = array();
+
+    for($i=0;$i<count($aArtObjects);$i++){
+        $oCurrentArtwork = $aArtObjects[$i];
+        $aArtworks[$oCurrentArtwork->ArtworkID]=$oCurrentArtwork->Title;
+        $oFormRadio->makeRadio("artwork".$oCurrentArtwork->ArtworkID,$oCurrentArtwork->Title." - ".$oCurrentArtwork->Year,$aWorkStatus); 
+    }
 
     $oFormRadio->makeSubmit("Submit", "Upload");
 
@@ -99,17 +99,19 @@
             
             <h1>Manage Artworks</h1>
             <div id="leftcolumn">
-               <h3>Use this form to upload artworks to your biography page</h3><br />
+               <h3>Use this form to upload artworks to your biography page. By default uploaded works are visible. To hide an artwork, select hidden.</h3><br />
                <p>For the best result, we recommend uploading high-resolution images (max 5mb) in JPEG format only. Both portrait and landscape images are accepted.</p> 
                <p>* Required fields</p>
             </div><!--end of leftcolumn-->
             <div id="rightcolumn">
 
-                <h2>My Current Artworks</h2>
-              <div id="edit">  <?php echo $oFormRadio->html; echo'<pre>';print_r($aWorks);echo'</pre>'; ?> </div>
+               <h2>Upload New Artworks</h2>
+                <div id="edit">  <?php echo $oForm->html; ?> </div>
 
-                <h2>Upload New Artworks</h2>
-              <div id="edit">  <?php echo $oForm->html; ?> </div>
+                <h2>My Current Artworks</h2>
+                <div id="edit"><div id="radio"><?php echo $oFormRadio->html; print_r($aData) ; ?></div></div>
+
+             
 
             </div><!--end of rightcolumn-->
 <?php 

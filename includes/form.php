@@ -171,9 +171,13 @@ class Form {
     	foreach($aOptions as $key=>$value){
     		$id = $sControlName ."_". $key;
 	
-			$this->sHTML .= '<input type="radio" name="'.$sControlName.'" value="'.$key.'" id="'.$id.'" /><label for="'.$id.'">'.$value.'</label>'."\n";
-    		
-    	} 
+			if($key==$sData){
+				$this->sHTML .= '<input type="radio" checked="checked" name="'.$sControlName.'" value="'.$key.'" id="'.$id.'" /><label for="'.$id.'">'.$value.'</label>'."\n";
+			}else{	
+	    		$this->sHTML .= '<input type="radio" name="'.$sControlName.'" value="'.$key.'" id="'.$id.'" /><label for="'.$id.'">'.$value.'</label>'."\n";
+	    	}
+	    }
+
      	$this->sHTML .= '</fieldset>';
 	}
 

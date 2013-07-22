@@ -99,6 +99,15 @@ form select {
 	float: left;
 }
 
+legend {
+	display: inline-block;
+	font-family: 'OpenSansBold';
+	float: left;
+	color: #EF5A28;
+	margin-right: 20px;
+	width: 200px;
+}
+
 /*--------------CONTAINER-------------------*/
 
 #container {
@@ -693,7 +702,15 @@ form select {
 	background-position: bottom;
 }
 
-
+#radio input {
+	width: 30px;
+	padding: 0;
+	margin-top: 0;
+}
+#radio label {
+	width: 80px;
+	height: 25px;
+}
 
 
 /*--------------FOOTER-------------------*/
