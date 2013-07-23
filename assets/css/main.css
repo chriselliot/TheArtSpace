@@ -1,4 +1,4 @@
-/*--------------RESET-------------------*/
+s/*--------------RESET-------------------*/
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -359,6 +359,9 @@ legend {
 #homeheading span {
 	color: #EF5A28;
 }
+#virtual {
+	background-color: white;
+}
 
 #virtual img {
 	float: left;
@@ -370,6 +373,9 @@ legend {
 	margin: 20px 0 10px 0;
 	padding-bottom: 5px;
 	color: #EF5A28;
+}
+#virtual h2, #virtual p {
+	margin-left: 10px;
 }
 
 #virtual-heading {
@@ -675,7 +681,7 @@ legend {
 	margin-left: 20px;
 }
 
-#login-butt #Submit, #edit #Submit {
+#login-butt #Submit, #edit #Submit, #edit #VisibleSubmit {
 	background-position: top;
 	background-repeat: no-repeat;
 	background-color: white;
@@ -687,17 +693,18 @@ legend {
 	border: none;
 	float: left;
 	font-size: 0;
+	margin-left: 185px;
 }
 
 #login-butt #Submit {
 	background-image: url('../images/login-button.png');
 }
 
-#edit #Submit {
+#edit #Submit, #edit #VisibleSubmit {
 	background-image: url('../images/update-button.png');
 }
 
-#login-butt #Submit:hover, #edit #Submit:hover {
+#login-butt #Submit:hover, #edit #Submit:hover, #edit #VisibleSubmit:hover {
 	cursor: pointer;
 	background-position: bottom;
 }

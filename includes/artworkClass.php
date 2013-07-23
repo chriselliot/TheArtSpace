@@ -66,7 +66,7 @@ class Artwork {
 
 		if($this->iArtworkID == 0){
 
-			$sQuery = "INSERT INTO tbartwork (CategoryID, ArtistID, Title, Description, Year, Materials, Size, SaleStatus, Price, PhotoLink)
+			$sQuery = "INSERT INTO tbartwork (CategoryID, ArtistID, Title, Description, Year, Materials, Size, SaleStatus, Price, PhotoLink, Visible)
 						VALUES ('".$oDatabase->escape_value($this->iCategoryID)."',
 								'".$oDatabase->escape_value($this->iArtistID)."',
 								'".$oDatabase->escape_value($this->sTitle)."',
@@ -76,7 +76,8 @@ class Artwork {
 								'".$oDatabase->escape_value($this->sSize)."',
 								'".$oDatabase->escape_value($this->sSaleStatus)."',
 								'".$oDatabase->escape_value($this->iPrice)."',
-								'".$oDatabase->escape_value($this->sPhotoLink)."')";
+								'".$oDatabase->escape_value($this->sPhotoLink)."',
+								'".$oDatabase->escape_value($this->iVisible)."')";
 
 			$oResult = $oDatabase->query($sQuery);
 
@@ -99,6 +100,7 @@ class Artwork {
 							SaleStatus = '".$oDatabase->escape_value($this->sSaleStatus)."',
 							Price = '".$oDatabase->escape_value($this->iPrice)."',
 							PhotoLink = '".$oDatabase->escape_value($this->sPhotoLink)."',
+							Visible = '".$oDatabase->escape_value($this->iVisible)."'
 							WHERE ArtworkID = ".$oDatabase->escape_value($this->iArtworkID);
 							
 						
@@ -186,6 +188,9 @@ class Artwork {
 				break;
 			case "PhotoLink":
 				$this->sPhotoLink = $value;
+				break;
+			case "Visible":
+				$this->iVisible = $value;
 				break;
 			default:
 				die($sProperty . " cannot be written to");

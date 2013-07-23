@@ -42,9 +42,10 @@
                 $oArtwork->Size = $_POST["Size"];
                 $oArtwork->SaleStatus = $_POST["SaleStatus"];
                 $oArtwork->Price = $_POST["Price"];
+                $oArtwork->Visible = 1;
                 $oArtwork->save();
 
-                //header("Location: artworks.php?CategoryID=$oArtwork->CategoryID"); 
+                header("Location: manageartworks.php"); 
                 exit;
             }   
         }
@@ -64,25 +65,55 @@
     $aSaleStatus[1] = "For Sale";
     $aSaleStatus[2] = "SOLD";
 
+    $aWorkStatus = array();
+    $aWorkStatus[1] = "Visible";
+    $aWorkStatus[0] = "Hidden";
+
+
     $iUserID = $_SESSION["currentUser"];
     $oArtist = new Artist();
     $oArtist->load($iUserID);
     $aArtObjects = $oArtist->Artworks;
 
-    $aWorkStatus = array();
-    $aWorkStatus[0] = "Visible";
-    $aWorkStatus[1] = "Hidden";
-    
+    //Sticky Data for oFormRadio
+    $aVisibleData = array();
+    for($i=0;$i<count($aArtObjects);$i++){
+        $oCurrentArtwork = $aArtObjects[$i];
+        $aVisibleData["artwork".$oCurrentArtwork->ArtworkID] = $oCurrentArtwork->Visible; 
+    }
+
     $oFormRadio = new Form();
+    $oFormRadio->data = $aVisibleData;//giving form sticky data
+
     $aArtworks = array();
 
     for($i=0;$i<count($aArtObjects);$i++){
         $oCurrentArtwork = $aArtObjects[$i];
         $aArtworks[$oCurrentArtwork->ArtworkID]=$oCurrentArtwork->Title;
-        $oFormRadio->makeRadio("artwork".$oCurrentArtwork->ArtworkID,$oCurrentArtwork->Title." - ".$oCurrentArtwork->Year,$aWorkStatus); 
+        $oFormRadio->makeRadio("artwork".$oCurrentArtwork->ArtworkID,$oCurrentArtwork->Title." - ".$oCurrentArtwork->Year,$aWorkStatus);
     }
 
-    $oFormRadio->makeSubmit("Submit", "Upload");
+    //processing VisibleSubmit form
+    if(isset($_POST["VisibleSubmit"])){
+
+        foreach ($_POST as $controlName => $controlValu){
+
+            if(strpos($controlName ,'artwork') !== false){
+
+                $ArtworkID = substr($controlName,7);
+
+                $oCurrentArtwork = new Artwork();
+                $oCurrentArtwork->load($ArtworkID);
+                $oCurrentArtwork->Visible = $_POST[$controlName];
+                $oCurrentArtwork->save();
+
+                header("Location: manageartworks.php"); 
+                exit;
+            } 
+        } 
+    }
+
+    $oFormRadio->makeSubmit("VisibleSubmit", "Upload");
 
     $oForm->makeInput("Title","Title *");
     $oForm->makeInput("Description","Description *");
@@ -110,8 +141,6 @@
 
                 <h2>My Current Artworks</h2>
                 <div id="edit"><div id="radio"><?php echo $oFormRadio->html; print_r($aData) ; ?></div></div>
-
-             
 
             </div><!--end of rightcolumn-->
 <?php 

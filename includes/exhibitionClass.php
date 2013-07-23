@@ -160,12 +160,12 @@ class Exhibition {
 		}
 	}
 }
-
+/*
 $oEx = new Exhibition();
 $oEx->load(1);
 
 echo '<pre>';
 print_r($oEx);
 echo '</pre>';
-
+*/
 ?>
