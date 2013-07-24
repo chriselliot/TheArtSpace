@@ -217,7 +217,7 @@ legend {
 
 #left-nav {
 	width: 200px;
-	height: 300px;
+	height: 100%;
 	margin: 0 20px;
 	float: left;
 }
@@ -370,20 +370,35 @@ legend {
 
 #virtual h1 {
 	border-bottom: 5px solid #F1F1F1; /*light grey*/
-	margin: 20px 0 10px 0;
+	margin: 10px 0 10px 0;
 	padding-bottom: 5px;
 	color: #EF5A28;
 }
 #virtual h2, #virtual p {
 	margin-left: 10px;
+	margin-bottom: 20px;
 }
 
 #virtual-heading {
-	font-size: 50px;
+	font-size: 60px;
 	color: black !important;
 }
 #virtual-heading span {
 	color: #919396;;
+}
+#virtual #left-nav {
+	background-color: white;
+}
+.virtual-artwork {
+	width: 443px;
+	margin-left: 20px;
+	margin-top: 20px;
+	float: left;
+}
+.virtual-artwork img {
+	max-width: 100%;
+	max-height: 100%;
+	margin: 0 0 10px 0 !important;
 }
 
 #fullwidth {

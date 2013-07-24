@@ -4,7 +4,7 @@
     require_once('includes/exhibitionClass.php');
     
     $oExhibition = new Exhibition();
-    $oExhibition->load(1);
+    $oExhibition->loadCurrent();
     
     $oEV = new ExhibitionView();
     echo $oEV->render($oExhibition);

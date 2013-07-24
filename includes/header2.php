@@ -59,4 +59,5 @@ if(isset($_SESSION["currentUser"]) == true){
 
             </ul>
         </div><!--end of header-->
+
     <div>

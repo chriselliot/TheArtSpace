@@ -10,6 +10,7 @@ class Exhibition {
 	private $sDescription;
 	private $sStartDate;
 	private $sEndDate;
+	private $iActivation;
 	private $aArtworks;
 
 	public function __construct(){
@@ -20,15 +21,15 @@ class Exhibition {
 		$this->sDescription = "";
 		$this->sStartDate = "";
 		$this->sEndDate = "";
+		$this->iActivation = 0;
 		$this->aArtworks = array();
-
 	}
 
 	public function load($iExhibitionID){
 
 		$oDatabase = new Database();
 
-		$sQuery = "SELECT ExhibitionID, ArtistID, ExhibitionTitle, ExhibitionDescription, StartDate, EndDate
+		$sQuery = "SELECT ExhibitionID, ArtistID, ExhibitionTitle, ExhibitionDescription, StartDate, EndDate, Activation
 				FROM tbexhibition
 				WHERE ExhibitionID = ".$iExhibitionID;
 
@@ -41,6 +42,7 @@ class Exhibition {
 		$this->sDescription = $aExhibitionInfo['ExhibitionDescription'];
 		$this->sStartDate = $aExhibitionInfo['StartDate'];
 		$this->sEndDate = $aExhibitionInfo['EndDate'];
+		$this->iActivation = $aExhibitionInfo['Activation'];
 
 		$sQuery = "SELECT ExhibitworkID
 					FROM tbexhibitwork
@@ -60,6 +62,22 @@ class Exhibition {
 
 	}
 
+	public function loadCurrent(){
+
+		$oDatabase = new Database();
+
+		$sQuery = "SELECT ExhibitionID
+				FROM tbexhibition
+				WHERE Activation = 1";
+
+		$oResult = $oDatabase->query($sQuery);
+		$aExhibitionInfo = $oDatabase->fetch_array($oResult);
+		$oDatabase-> close();
+
+		$this->load($aExhibitionInfo['ExhibitionID']);	
+
+	}
+
 
 	public function save(){
 
@@ -67,13 +85,14 @@ class Exhibition {
 
 		if($this->iExhibitionID == 0){
 
-			$sQuery = "INSERT INTO tbexhibition (ExhibitionID, ArtistID, ExhibitionTitle, StartDate, EndDate, ExhibitionDescription)
+			$sQuery = "INSERT INTO tbexhibition (ExhibitionID, ArtistID, ExhibitionTitle, StartDate, EndDate, ExhibitionDescription, Activation)
 						VALUES ('".$oDatabase->escape_value($this->iExhibitionID)."',
 								'".$oDatabase->escape_value($this->iArtistID)."',
 								'".$oDatabase->escape_value($this->sTitle)."',
 								'".$oDatabase->escape_value($this->sStartDate)."',
 								'".$oDatabase->escape_value($this->sEndDate)."',
-								'".$oDatabase->escape_value($this->sDescription)."')";
+								'".$oDatabase->escape_value($this->sDescription)."',
+								'".$oDatabase->escape_value($this->iActivation)."')";
 
 			$oResult = $oDatabase->query($sQuery);
 
@@ -92,6 +111,7 @@ class Exhibition {
 							StartDate = '".$oDatabase->escape_value($this->sStartDate)."',
 							EndDate = '".$oDatabase->escape_value($this->sEndDate)."',
 							ExhibitionDescription = '".$oDatabase->escape_value($this->sDescription)."',
+							Activation = '".$oDatabase->escape_value($this->iActivation)."',
 							WHERE ExhibitionID = ".$oDatabase->escape_value($this->iExhibitionID);
 							
 						
@@ -126,6 +146,9 @@ class Exhibition {
 			case "ExhibitionDescription":
 				return $this->sDescription;
 				break;
+			case "Activation":
+				return $this->iActivation;
+				break;
 			case "Artworks":
 				return $this->aArtworks;
 				break;
@@ -154,6 +177,9 @@ class Exhibition {
 				break;
 			case "ExhibitionDescription":
 				$this->sDescription = $value;
+				break;
+			case "Activation":
+				$this->iActivation = $value;
 				break;
 			default:
 				die($sProperty . " cannot be written to");
