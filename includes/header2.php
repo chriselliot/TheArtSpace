@@ -24,6 +24,7 @@ if(isset($_SESSION["currentUser"]) == true){
         <link rel="shortcut icon" href="assets/images/favicon.ico" />
         <script src="assets/js/jquery-1.10.2.min.js"></script>
         <script src="assets/js/lightbox-2.6.min.js"></script>
+        <script src="assets/js/jquery.mosaicflow.min.js"></script>
     </head>
     
 <body>

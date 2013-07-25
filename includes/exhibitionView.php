@@ -15,8 +15,9 @@ class ExhibitionView {
 		$sHTML .= '<div id="virtual">
 			            <h1>Virtual Exhibition</h1>
 			            <h1 id="virtual-heading">'.strtoupper($oExArtist->FirstName).' '.strtoupper($oExArtist->LastName).'<span> - '.strtoupper($oExhibition->ExhibitionTitle).'</span></h1>
-			            <div id="left-nav"><h2>Exhibition Description</h2><p>'.$oExhibition->ExhibitionDescription.'</p></div>
-			              <div id="main">';
+			            <div id="left-nav"><h2>Exhibition Description</h2><p>'.$oExhibition->ExhibitionDescription.'</p>
+			            <a id="artist-link" href="artistbio.php?ArtistID='.$oExArtist->ArtistID.'">View this Artists biography</a></div>
+			              <div id="main"><div class="clearfix mosaicflow">';
 
 		for($i=0;$i<count($aWorks);$i++){
 
@@ -28,14 +29,15 @@ class ExhibitionView {
 			$oArtwork = new Artwork();
 			$oArtwork->load($oCurrentExArtwork->ArtworkID);
 
-			$sHTML .= '<div class="virtual-artwork">
+			$sHTML .= '<div class="mosaicflow__item">
 						<a href="assets/images/'.$oArtwork->PhotoLink.'" title="'.$oArtwork->Title.' by '.$oExArtist->FirstName.' '.$oExArtist->LastName.'" data-lightbox="assets/images/'.$oArtwork->PhotoLink.'">
 						<img alt="Artwork Image" src="assets/images/'.$oArtwork->PhotoLink.'" title="Click for larger image" /></a>
 						<h3 class="title">'.$oArtwork->Title.' - '.$oArtwork->Year.'</h3>
-						</div>';
+						</div>
+						';
 		}
 
-		$sHTML .=	 '<div class="clear"></div>
+		$sHTML .=	 '</div><div class="clear"></div>
 			         </div>
 			         </div> ';   
 

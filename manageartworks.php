@@ -5,7 +5,11 @@
     require_once("includes/encoder.php");
     require_once("includes/categoryManager.php");
 
+    //--------Set up main form------------------------------------------------------------------------------
+
     $oForm = new Form();
+
+    //-------Check to see if logged in----------------------------------------------------------------------
 
     if(isset($_SESSION["currentUser"]) == false){
 
@@ -13,6 +17,8 @@
         exit;
 
     }else{
+
+        //-------If logged in process main form--------------------------------------------------------------
 
         $iUserID = $_SESSION["currentUser"];
 
@@ -51,6 +57,8 @@
         }
     }
 
+    //--------Setting up all categories for drop down----------------------------------------------------------
+
     $oCM = new CategoryManager();
     $aCatObjects = $oCM->getAllCategories();
 
@@ -61,42 +69,44 @@
         $aCategories[$oCategory->CategoryID]=$oCategory->CategoryName;
     }
 
+    //-------Hard coding values for sale status drop down-------------------------------------------------------
+
     $aSaleStatus = array();
     $aSaleStatus[1] = "For Sale";
     $aSaleStatus[2] = "SOLD";
+
+    //-------Hard coding values for visibility radio buttons-----------------------------------------------------
 
     $aWorkStatus = array();
     $aWorkStatus[1] = "Visible";
     $aWorkStatus[0] = "Hidden";
 
+    //--------Load the current artist and array of artworks-------------------------------------------------------
 
     $iUserID = $_SESSION["currentUser"];
     $oArtist = new Artist();
     $oArtist->load($iUserID);
     $aArtObjects = $oArtist->Artworks;
 
-    //Sticky Data for oFormRadio
+    //-------Sticky Data for radio buttons-----------------------------------------------------------------------
+
     $aVisibleData = array();
     for($i=0;$i<count($aArtObjects);$i++){
         $oCurrentArtwork = $aArtObjects[$i];
         $aVisibleData["artwork".$oCurrentArtwork->ArtworkID] = $oCurrentArtwork->Visible; 
     }
 
+    //-------Set up form for visibility radio buttons-------------------------------------------------------------
+
     $oFormRadio = new Form();
-    $oFormRadio->data = $aVisibleData;//giving form sticky data
+    $oFormRadio->data = $aVisibleData;
 
-    $aArtworks = array();
+    //---------Processing data for visibility radio buttons-------------------------------------------------------
 
-    for($i=0;$i<count($aArtObjects);$i++){
-        $oCurrentArtwork = $aArtObjects[$i];
-        $aArtworks[$oCurrentArtwork->ArtworkID]=$oCurrentArtwork->Title;
-        $oFormRadio->makeRadio("artwork".$oCurrentArtwork->ArtworkID,$oCurrentArtwork->Title." - ".$oCurrentArtwork->Year,$aWorkStatus);
-    }
-
-    //processing VisibleSubmit form
     if(isset($_POST["VisibleSubmit"])){
+         $oFormRadio->data = $_POST;
 
-        foreach ($_POST as $controlName => $controlValu){
+        foreach ($_POST as $controlName => $controlValue){
 
             if(strpos($controlName ,'artwork') !== false){
 
@@ -106,14 +116,20 @@
                 $oCurrentArtwork->load($ArtworkID);
                 $oCurrentArtwork->Visible = $_POST[$controlName];
                 $oCurrentArtwork->save();
-
-                header("Location: manageartworks.php"); 
-                exit;
             } 
         } 
     }
 
+    //---------Create the radio button form objects--------------------------------------------------------------
+
+    for($i=0;$i<count($aArtObjects);$i++){
+        $oCurrentArtwork = $aArtObjects[$i];
+        $oFormRadio->makeRadio("artwork".$oCurrentArtwork->ArtworkID,$oCurrentArtwork->Title." - ".$oCurrentArtwork->Year,$aWorkStatus);
+    }
+
     $oFormRadio->makeSubmit("VisibleSubmit", "Upload");
+
+    //---------Create the main form------------------------------------------------------------------------------
 
     $oForm->makeInput("Title","Title *");
     $oForm->makeInput("Description","Description *");
@@ -140,7 +156,7 @@
                 <div id="edit">  <?php echo $oForm->html; ?> </div>
 
                 <h2>My Current Artworks</h2>
-                <div id="edit"><div id="radio"><?php echo $oFormRadio->html; print_r($aData) ; ?></div></div>
+                <div id="edit"><div id="radio"><?php echo $oFormRadio->html; ?></div></div>
 
             </div><!--end of rightcolumn-->
 <?php 

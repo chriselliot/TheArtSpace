@@ -218,7 +218,7 @@ legend {
 #left-nav {
 	width: 200px;
 	height: 100%;
-	margin: 0 20px;
+	margin: 0 20px 20px 20px;
 	float: left;
 }
 
@@ -363,10 +363,10 @@ legend {
 	background-color: white;
 }
 
-#virtual img {
+/*#virtual img {
 	float: left;
 	margin: 10px;
-}
+}*/
 
 #virtual h1 {
 	border-bottom: 5px solid #F1F1F1; /*light grey*/
@@ -389,16 +389,16 @@ legend {
 #virtual #left-nav {
 	background-color: white;
 }
-.virtual-artwork {
-	width: 443px;
-	margin-left: 20px;
-	margin-top: 20px;
-	float: left;
+
+#artist-link {
+	text-decoration: none;
+	color: #EF5A28;
+	font-family: 'OpenSansBold';
+	display: block;
+	margin: 10px;
 }
-.virtual-artwork img {
-	max-width: 100%;
-	max-height: 100%;
-	margin: 0 0 10px 0 !important;
+#artist-link:hover {
+	text-decoration: underline;
 }
 
 #fullwidth {
@@ -827,4 +827,19 @@ legend {
 
 .clear {
 	clear: both;
+}
+
+/*--------------mosaic flow--------------*/
+
+.mosaicflow__column {
+    float:left;
+}
+.mosaicflow__item {
+    margin: 20px;
+}
+.mosaicflow__item img {
+    display:block;
+    width:100%;
+    height:auto;
+    margin: 0 !important;
 }
